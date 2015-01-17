@@ -1,0 +1,25 @@
+{% extends "songs/base.html" %}
+{% load staticfiles %}
+
+{% block title %} Download {{song.title}} {% endblock %}
+
+{% block content %}
+	<h2> Download Song '{{song.title}}' </h2>
+	<p> This song has been downloaded <h2> {{song.num_downloads}} </h2> times!!! </p>
+	<h3> Instructions to download </h3>
+	<ul>
+		<li> Right click the song link and click on 'Save target as'/'Save link as' </li>
+		<li> After download is completed, do play the song fully once to see its downloaded correctly </li>
+
+	</ul>	
+
+	<a href='/static/{{song.song_path}}'>Song audio</a>
+	<br/>
+	<a href='/static/{{song.lyrics_path}}'>Lyrics </a>
+
+	<p> If you have any queries, please feel free to drop a 
+			comment/request/suggestion at 
+	<a href = '{% url 'feedback:get_feedback' %}'>Feedback </a>
+	</p>
+{% endblock %}
+

@@ -1,0 +1,38 @@
+# compiled source
+
+*.pyc
+*.exe
+*.o
+*.so
+
+
+#backup files
+*.bak
+*.swp
+
+#songs
+*.mp3
+*.wma
+
+#lyrics files
+*.doc
+*.docx
+
+
+#logs & database
+*.sqlite3
+*.sql
+*.log
+*._*
+*.DS_Store
+*.DS_Store?
+
+
+
+#packages
+*.zip
+*.tgz
+*.gz
+*.jar
+*.tar
+

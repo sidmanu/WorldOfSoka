@@ -1,0 +1,16 @@
+{% extends "songs/base.html" %}
+{% load staticfiles %}
+
+{% block title %} Welcome to WorldOfSoka! {% endblock %}
+
+{% block content %}
+{{all_song_list_html}}
+
+<h3> Latest Songs </h3>
+{{latest_songs_list_html}}
+
+<h3> Most Downloaded </h3>
+{{most_dwld_songs_list_html}}
+
+{% endblock %}
+

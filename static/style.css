@@ -1,0 +1,98 @@
+body {
+	font-family:;
+	color:black;
+}
+
+#topbar {
+	height:10%;
+	background:blue url('/static/images/lion.jpg') center ;
+	opacity:50%;
+	color:black;
+	text-align:center;
+	vertical-align:center;
+	font: arial bold;
+	font-size:350%;
+	border-top: black solid;
+	border-right: black solid;
+	border-left: black solid;
+}
+
+#bottombar {
+	color:white;
+	text-align:center;
+	font:calibri;
+	background:#0C3A6D;
+	height:5%;
+}
+
+
+#topmenu {
+	border-top:2px black solid;
+	border-bottom:2px black solid;
+
+}
+
+#topmenu li {
+	color:black;
+	display:inline;
+	list-style-type:none;
+	padding-right:30px;
+}
+
+#sidebar {
+	width:15%;
+	height:100%;
+	float:left;
+	background: #0c3aad;
+	color:white;
+	border: white;
+}
+
+#sidebar li a{
+	color: white;
+	border: 2px;
+}
+
+#content {
+	width:85%;
+	height:100%;
+	float:left;
+	background: #f7f7f7;
+	width: parent;
+}
+
+#songtile {
+	border-top:solid 2px;
+	border-right:solid 1px;
+	border-left:solid 1px;
+	border-bottom:solid 1px;
+	color:black;
+	background:white;
+	width:250;
+}
+
+#contact {
+	color:black;
+}
+
+#comments_table td, th {
+	font-size: 11px;
+	line-height: 13px;
+	border-bottom: 1px solid #EEE;
+	vertical-align: top;
+	padding: 5px;
+	font-family: "Lucida Grande",Verdana,Arial,sans-serif;
+}
+
+#comments_table th {
+	border-top:solid 2px;
+	border-right:solid 1px;
+	border-left:solid 1px;
+	background:blue;
+	color:white;
+}
+
+
+#feedback_form {
+	color:black;
+}

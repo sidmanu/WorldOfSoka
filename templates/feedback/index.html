@@ -1,0 +1,32 @@
+{% extends "songs/base.html" %}
+{% load staticfiles %}
+
+{% block title %} Requests & Feedback {% endblock %}
+
+{% block content %}
+
+<form id="feedback_form" method="post" action={{URL}}/feedback/>
+{% csrf_token %}
+{{feedback_form.as_p}}
+<input type="submit" value="Submit"/>
+</form>
+
+
+
+
+<table id='comments_table'>
+<tr>
+	<th> Date </th>
+	<th> Name </th>
+	<th> Comment </th>
+</tr>
+{% for comment in comments %}
+<tr>
+	<td> {{comment.comment_date}} </td>
+	<td> {{comment.commentor_name}} </td>
+	<td> {{comment.comment_text}} </td>
+</tr>
+{% endfor %}
+</table>
+{% endblock %}
+

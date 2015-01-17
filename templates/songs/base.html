@@ -1,0 +1,70 @@
+{% load staticfiles %}
+<html>
+<head>
+	<title>
+	{% block title %}
+		World of Soka!
+	{% endblock %}
+	</title>
+	<link rel="stylesheet" type="text/css" href="/static/style.css" />
+	<script type="text/javascript" src="/static/jquery-1.11.2.min.js"> </script>
+
+	<script type="text/javascript">
+	$(document).ready(function() {
+		$("#content").hide();
+		$("#content").fadeIn(1000);
+
+			$("li a").mouseenter(function() {
+				//alert();
+				$(this).fadeOut(100);
+				$(this).fadeIn(500);
+			});
+	});
+	</script>
+</head>
+<body>
+
+	<div id="topbar">
+		World of Soka!!! 
+
+		</div>
+	<div id='topmenu'>
+		<ul>
+			<li> <a href='{{ URL }}/ '>Home</a> </li>
+			<li> <a href='{{ URL }}/feedback '>Requests & Feedback</a> </li>
+			<li> <a href='{{ URL }}/contact '>Contact Us</a> </li>
+
+		</ul>
+	</div>
+	<div id="maincontent">
+			<div id="sidebar">
+				{% block sidebar %}
+				
+				<h3> Songs by Language </h3>	
+				<ul>
+					{% for lang in lang_list %}
+						<li>
+						<a href="{% url 'songs:lang' lang.lang_name %}"> {{lang.lang_name}} </a>
+						</li>
+					{% endfor %}
+				</ul>
+
+				{% endblock %}
+			</div>
+
+			<div id="content">
+				{% block content %}
+
+
+				{% endblock %}
+			</div>
+	</div>
+
+
+	<div id="bottombar">
+		Thank you!!!
+	</div>
+
+</body>
+
+</html>
