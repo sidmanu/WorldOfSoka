@@ -1,0 +1,14 @@
+<ul>
+{%  for song in songs %}
+<li>
+<div id='songtile'>
+<div class='songname' title='{{song.title}}' style='width:230px;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;'>{{song.title}}</div>
+<object width=205 height=25 data='/static/dewplayer.swf?son=/static/{{song.song_path}}&amp;autoplay=0&amp;autoreplay=0' type='application/x-shockwave-flash'>  
+</object>
+<br/>
+<a href='/songs/download/{{song.id}}/'><i class='fa fa-cloud-download'></i>&nbsp;Download</a>
+</div>
+</li>
+{% endfor %}
+</ul>
+

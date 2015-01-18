@@ -7,35 +7,23 @@
 	{% endblock %}
 	</title>
 	<link rel="stylesheet" type="text/css" href="/static/style.css" />
-	<script type="text/javascript" src="/static/jquery-1.11.2.min.js"> </script>
-
-	<script type="text/javascript">
-	$(document).ready(function() {
-		$("#content").hide();
-		$("#content").fadeIn(1000);
-
-			$("li a").mouseenter(function() {
-				//alert();
-				$(this).fadeOut(100);
-				$(this).fadeIn(500);
-			});
-	});
-	</script>
+	<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
 </head>
 <body>
 
 	<div id="topbar">
-		World of Soka!!! 
-
+		<div id="topbarphoto"></div>
+		<h1>World of Soka</h1>
 		</div>
 	<div id='topmenu'>
 		<ul>
-			<li> <a href='{{ URL }}/ '>Home</a> </li>
-			<li> <a href='{{ URL }}/feedback '>Requests & Feedback</a> </li>
-			<li> <a href='{{ URL }}/contact '>Contact Us</a> </li>
+			<li> <a href='{{ URL }}/ '><i class='fa fa-home'></i> Home</a> </li>
+			<li> <a href='{{ URL }}/feedback '><i class='fa fa-comments'></i> Requests & Feedback</a> </li>
+			<li> <a href='{{ URL }}/contact '><i class='fa fa-rss'></i> Contact Us</a> </li>
 
 		</ul>
 	</div>
+	<div id="maincontentwrapper">
 	<div id="maincontent">
 			<div id="sidebar">
 				{% block sidebar %}
@@ -44,6 +32,7 @@
 				<ul>
 					{% for lang in lang_list %}
 						<li>
+						<i class="fa fa-music"> </i>
 						<a href="{% url 'songs:lang' lang.lang_name %}"> {{lang.lang_name}} </a>
 						</li>
 					{% endfor %}
@@ -52,7 +41,7 @@
 				{% endblock %}
 			</div>
 
-			<div id="content">
+			<div id="content" style="">
 				{% block content %}
 
 
@@ -60,11 +49,15 @@
 			</div>
 	</div>
 
-
-	<div id="bottombar">
-		Thank you!!!
 	</div>
-
 </body>
+	<script type="text/javascript" src="/static/jquery-1.11.2.min.js"> </script>
+
+	<script type="text/javascript">
+	$(document).ready(function() {
+		$("#content").hide();
+		$("#content").fadeIn(1000);
+	});
+	</script>
 
 </html>

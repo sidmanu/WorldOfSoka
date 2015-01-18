@@ -1,76 +1,147 @@
 body {
-	font-family:;
+	font-family:calibri;
+	min-width:1024px;
 	color:black;
+	overflow-y:hidden;
 }
 
 #topbar {
-	height:10%;
-	background:blue url('/static/images/lion.jpg') center ;
-	opacity:50%;
+	position:absolute;
+	top:0px;
+	left:0px;
+	width:100%;
+	height:70px;	
 	color:black;
 	text-align:center;
 	vertical-align:center;
 	font: arial bold;
 	font-size:350%;
-	border-top: black solid;
-	border-right: black solid;
-	border-left: black solid;
 }
-
-#bottombar {
-	color:white;
+#topbarphoto {
+	position:absolute;
+	background:white url('/static/images/lion.jpg') center;
+	top:0px;left:0px;
+	width:100%;height:100px;
+}
+#topbar h1 {
+	position:absolute;
+	background-color:transparent;
+	width:100%;
 	text-align:center;
-	font:calibri;
-	background:#0C3A6D;
-	height:5%;
+	margin:2px 0px;
+	padding:0px;
+	font-size:56px;
+	color:white;
+	text-shadow:0px 0px 5px #333;
 }
-
-
 #topmenu {
-	border-top:2px black solid;
-	border-bottom:2px black solid;
-
+	position:absolute;
+	left:0px;
+	width:100%;
+	top:70px;
+	height:50px;
+	background-color:#EEE;
+	box-shadow:1px 0px 3px #666;
+	z-index:3;	
 }
-
+#topmenu a {
+  color:#3366FF;
+  text-decoration:none;
+  font-family:calibri;
+  text-shadow:0px 0px 1px #999;
+  transition:all 0.2s ease-out;
+}
+#topmenu a:hover {
+  text-shadow:0px 0px 4px #333;
+}
 #topmenu li {
 	color:black;
 	display:inline;
 	list-style-type:none;
 	padding-right:30px;
 }
-
+#maincontentwrapper {
+	position:absolute;
+	left:0px;
+	width:100%;
+	top:120px;
+	height:calc(100% - 120px);
+}
+#maincontent {
+	min-width:1024px;
+	margin:0px auto;
+	height:100%;
+}
 #sidebar {
-	width:15%;
+	width:180px;
 	height:100%;
 	float:left;
-	background: #0c3aad;
+	background-color:#3366FF;
 	color:white;
-	border: white;
+	padding:20px;
+	box-shadow:0px 2px 3px #666;
+	position:relative;
+	z-index:2;
+}
+
+#sidebar ul {
+	list-style-type:none;
 }
 
 #sidebar li a{
 	color: white;
 	border: 2px;
+	text-transform:capitalize;
 }
 
 #content {
-	width:85%;
-	height:100%;
+	padding:20px;
+	width:calc(100% - 260px);
 	float:left;
 	background: #f7f7f7;
-	width: parent;
+	height:calc(100% - 40px);
+	overflow-y:auto;
+	position:relative;
+	z-index:1;
+}
+
+
+#download_instructions ul {
+
 }
 
 #songtile {
-	border-top:solid 2px;
-	border-right:solid 1px;
-	border-left:solid 1px;
-	border-bottom:solid 1px;
+	padding:10px 20px 10px 20px;
 	color:black;
-	background:white;
 	width:250;
+	border:thin #CCC solid;
+	background-color:#F9F9F9;
+	border-radius:1px;
+	margin-top:5px;
+	transition:all 0.2s ease-out;
+}
+#songtile:hover {
+	background-color:#F0F0F0;
+}
+.songname {
+	color:black;
+	text-transform:bold;
+	text-shadow:0px 0px 1px #888;
 }
 
+#content ul {
+	list-style-type:none;
+}
+	
+#content ul li {
+	width:300px;
+	display:inline-block;
+}
+#content ul li object {
+	margin:10px 0px 5px 0px;
+	border:thin #DDD solid;
+	padding:2px 1px 1px 1px;
+}
 #contact {
 	color:black;
 }
@@ -95,4 +166,15 @@ body {
 
 #feedback_form {
 	color:black;
+}
+
+
+a {
+  color:darkgreen;
+  text-decoration:none;
+  font-family:calibri;
+  transition:all 0.2s ease-out;
+}
+a:hover {
+  text-shadow:0px 0px 2px green;
 }

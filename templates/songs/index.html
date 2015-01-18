@@ -4,13 +4,13 @@
 {% block title %} Welcome to WorldOfSoka! {% endblock %}
 
 {% block content %}
-{{all_song_list_html}}
 
 <h3> Latest Songs </h3>
-{{latest_songs_list_html}}
+{% include "songs/song_player_list.html" with songs=latest_songs %}
 
 <h3> Most Downloaded </h3>
-{{most_dwld_songs_list_html}}
+{% include "songs/song_player_list.html" with songs=most_dwld_songs %}
+
 
 {% endblock %}
 

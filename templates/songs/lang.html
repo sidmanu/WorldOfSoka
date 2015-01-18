@@ -1,10 +1,10 @@
 {% extends "songs/base.html" %}
 {% load staticfiles %}
 
-{% block title %} {{lang.lang_name}} Songs {% endblock %}
+{% block title %} {{lang}} Songs {% endblock %}
 
 {% block content %}
-	<h3> {{lang.lang_name}} Songs </h3>
-	{{song_list_html}}
+	<h3> {{lang}} Songs </h3>
+	{% include 'songs/song_player_list.html' with songs=song_list %}
 {% endblock %}
 
