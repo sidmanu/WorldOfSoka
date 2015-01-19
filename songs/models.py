@@ -7,11 +7,11 @@ class Language(models.Model):
 		return self.lang_name
 
 class Song(models.Model):
-	title = models.CharField(max_length=40)
+	title = models.CharField(max_length=50)
 	lang = models.ForeignKey(Language) 
 	upload_date = models.DateTimeField('date uploaded')
 	keywords = models.TextField(blank=True)
-	song_path = models.CharField(max_length=50)
+	song_path = models.CharField(max_length=70)
 	lyrics_path = models.CharField(max_length=70)
 	num_downloads = models.IntegerField(default=0)
 
