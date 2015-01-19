@@ -9,16 +9,22 @@
 	<p> This song has been downloaded <b> {{song.num_downloads}} </b> times.</p>
 	<h3> Instructions to download </h3>
 	<ol name="download_instructions" id="download_instructions">
-		<li> Right click the song link and click on 'Save target as'/'Save link as' </li>
+		<li> Right click the song link below and click on 'Save target as'/'Save link as' </li>
 		<li> After download is completed, do play the song fully once to see its downloaded correctly </li>
 	</ol>	
 
 	<a style="width:200px" href='/static/{{song.song_path}}'>
 	<i class="fa fa-download"></i> Song
 	</a> &nbsp &nbsp
+	{% if song.lyrics_path == "invalid" %} 
+		<p style="color:red">
+		Sorry! No lyrics available yet.
+		</p>
+	{% else %}
 	<a href='/static/{{song.lyrics_path}}'>
 		<i class="fa fa-file-word-o"></i> Lyrics</a>
 
+	{% endif %}
 	<p> If you have any queries, please feel free to drop a 
 			comment/request/suggestion at 
 	<a href = '{% url 'feedback:get_feedback' %}'>Feedback </a>
