@@ -5,12 +5,11 @@
 
 {% block content %}
 
-<h3> Latest Songs </h3>
-{% include "songs/song_player_list.html" with songs=latest_songs %}
-
 <h3> Most Downloaded </h3>
 {% include "songs/song_player_list.html" with songs=most_dwld_songs %}
 
+<h3> Latest Uploaded </h3>
+{% include "songs/song_player_list.html" with songs=latest_songs %}
 
 {% endblock %}
 
