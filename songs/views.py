@@ -48,3 +48,19 @@ def download(request, song_id):
 	except:
 		traceback.print_exc(file=sys.stdout)
 	return HttpResponse('Server Error!!!')
+
+def search(request):
+	context = get_sidebar_context()
+	if request.method == 'POST':
+		string = request.POST['search_string']
+	else:
+		string = "united sensei"
+	context['search_string'] = string 
+	tokens = string.split()	
+	songs = Song.objects.all()	
+
+	for token in tokens:	
+		songs = songs.filter(title__contains=token)
+
+	context['song_list'] = songs
+	return render(request, 'songs/search.html', context) 

@@ -146,24 +146,30 @@ body {
 	color:black;
 }
 
-#comments_table td, th {
+.comments_table {
 	font-size: 11px;
-	line-height: 13px;
-	border-bottom: 1px solid #EEE;
-	vertical-align: top;
 	padding: 5px;
-	font-family: "Lucida Grande",Verdana,Arial,sans-serif;
+	width:100%;
+	background-color:white;
+	border-collapse:collapse;
 }
 
-#comments_table th {
-	border-top:solid 2px;
-	border-right:solid 1px;
-	border-left:solid 1px;
-	background:blue;
+.comments_table td {
+	white-space:nowrap;
+	overflow:hidden;
+	text-overflow:ellipsis;
+	padding:5px;
+	border:thin #CCC solid;
+}
+
+.comments_table th {
+	background:#3366FF;
 	color:white;
+	padding:5px;
+	border:thin white solid;
 }
-
-
+.comments_table tr {
+}
 #feedback_form {
 	color:black;
 }
@@ -177,4 +183,11 @@ a {
 }
 a:hover {
   text-shadow:0px 0px 2px green;
+}
+
+
+
+#search_form input{
+	width:100%;
+	margin-bottom:3px;
 }

@@ -28,8 +28,8 @@ def send_email(comment):
 def add_form_feedback(form_data):
 	c = Comment(commentor_name=form_data['your_name'],
 			comment_text = form_data['your_comment'],
-			commentor_email = form_data['your_email'],
-			comment_date = timezone.now())
+			commentor_email = form_data['your_email'])
+	c.comment_date = timezone.now().strip()
 	send_email(c)
 	c.save()
 			
@@ -47,7 +47,7 @@ def get_feedback(request):
 		""" first time an empty form is displayed"""
 		form = FeedbackForm()
 
-	comments = Comment.objects.all()
+	comments = Comment.objects.order_by('-comment_date')[:10]
 	context['feedback_form'] = form
 	context['comments'] = comments 
 	return render(request, 'feedback/index.html', context)

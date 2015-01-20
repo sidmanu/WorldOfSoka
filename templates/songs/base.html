@@ -38,6 +38,13 @@
 					{% endfor %}
 				</ul>
 
+				<h3> Search </h3>
+					<form id="search_form" action='/songs/search/' method="POST">
+					{% csrf_token %}
+					<input type="text" name="search_string">
+					<input type="submit" name="search" value="search">
+					</form>	
+
 				{% endblock %}
 			</div>
 
