@@ -4,9 +4,9 @@
 {% block title %} Search {% endblock %}
 
 {% block content %}
-	<h3> Shortlisted Songs matching "{{search_string}}" </h3>
+	<h3> Songs matching "{{search_string}}" </h3>
 	{% if not song_list %}
-	No songs found matching the search string "{{search_string}}"!
+	No songs found matching the search string!
 	{% else %}
 	{% include 'songs/song_player_list.html' with songs=song_list %}
 	{% endif %}

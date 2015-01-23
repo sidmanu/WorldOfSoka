@@ -18,8 +18,8 @@ class FeedbackForm(forms.Form):
 
 def send_email(comment):
 	recipients = ['siddharthmanu@gmail.com']	
-	subject = '#WorldOfSoka New Comment' 
-	sender = comment.commentor_email
+	subject = '#WorldOfSoka New Comment from %s'%comment.commentor_email
+	sender = 'noreply@worldofsoka.in' 
 	try:
 		send_mail(subject, comment.comment_text, sender, recipients)
 	except:
@@ -29,25 +29,29 @@ def add_form_feedback(form_data):
 	c = Comment(commentor_name=form_data['your_name'],
 			comment_text = form_data['your_comment'],
 			commentor_email = form_data['your_email'])
-	c.comment_date = timezone.now().strip()
+	c.comment_date = timezone.now()
 	send_email(c)
 	c.save()
 			
 def get_feedback(request):
+	#TODO: fix recaptcha. it always returns false
 	context = songs.views.get_sidebar_context()
 
 	if request.method == 'POST':
-		form = FeedbackForm(request.POST)
+		post_data = request.POST
+		meta_data = request.META
+		form = FeedbackForm(post_data)
 
 		if form.is_valid():
-			add_form_feedback(form.cleaned_data)	
-			return HttpResponseRedirect('/feedback/')
-
+			add_form_feedback(form.cleaned_data)
+			#clear the form if data is added. Else let the fields remain
+			form = FeedbackForm()
+		
 	else:
 		""" first time an empty form is displayed"""
 		form = FeedbackForm()
 
 	comments = Comment.objects.order_by('-comment_date')[:10]
-	context['feedback_form'] = form
 	context['comments'] = comments 
+	context['feedback_form'] = form
 	return render(request, 'feedback/index.html', context)

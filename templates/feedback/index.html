@@ -1,13 +1,43 @@
 {% extends "songs/base.html" %}
 {% load staticfiles %}
 
+
+{% block extrahead %}
+<script src='https://www.google.com/recaptcha/api.js'></script>
+{% endblock %}
+
 {% block title %} Requests & Feedback {% endblock %}
 
 {% block content %}
 
-<form id="feedback_form" method="post" action={{URL}}/feedback/>
+
+
+<p> Thank you for taking out the time to leave us a feedback! We will try to reply asap! </p>
+
+<form id="feedback_form" method="post" action="{{URL}}/feedback/">
 {% csrf_token %}
-{{feedback_form.as_p}}
+
+{{ feedback_form.non_field_errors }}
+<div class="fieldWrapper">
+    {{ feedback_form.id_your_name.errors }}
+    <label for="{{ feedback_form.your_name.id_for_label }}">Name:</label>
+<br/>
+    {{ feedback_form.your_name }}
+</div>
+<div class="fieldWrapper">
+    {{ feedback_form.your_email.errors }}
+    <label for="{{ feedback_form.your_email.id_for_label }}">Email:</label>
+<br/>
+    {{ feedback_form.your_email }}
+</div>
+<div class="comment_box">
+    {{ feedback_form.your_comment.errors }}
+    <label for="{{ feedback_form.your_comment.id_for_label }}">Comment:</label>
+<br/>
+    {{ feedback_form.your_comment }}
+</div>
+
+
 <input type="submit" value="Submit"/>
 </form>
 
