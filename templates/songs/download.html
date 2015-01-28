@@ -4,6 +4,8 @@
 {% block title %} Download {{song.title}} {% endblock %}
 
 {% block content %}
+
+	{% include "songs/disclaimer.html" %}
 	<h2> Download Song '{{song.title}}' </h2>
 
 	<p> This song has been downloaded <b> {{song.num_downloads}} </b> times.</p>
@@ -13,16 +15,16 @@
 		<li> After download is completed, do play the song fully once to see its downloaded correctly </li>
 	</ol>	
 
-	<a style="width:200px" href='/static/{{song.song_path}}'>
-	<i class="fa fa-download"></i> Song
+	<a style="width:200px;font-size:24px" href='/static/{{song.song_path}}'>
+	<i class="fa fa-download"></i> Song Link
 	</a> &nbsp &nbsp
 	{% if song.lyrics_path == "invalid" %} 
-		<p style="color:red">
+		<p style="color:red; font-size:24px">
 		Sorry! No lyrics available yet.
 		</p>
 	{% else %}
-	<a href='/static/{{song.lyrics_path}}'>
-		<i class="fa fa-file-word-o"></i> Lyrics</a>
+	<a href='/static/{{song.lyrics_path}}' style="font-size:24px">
+		<i class="fa fa-file-word-o" ></i> Lyrics</a>
 
 	{% endif %}
 	<p> If you have any queries, please feel free to drop a 

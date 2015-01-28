@@ -4,7 +4,7 @@
 {% block title %} Welcome to WorldOfSoka! {% endblock %}
 
 {% block content %}
-
+{% include "songs/disclaimer.html" %}
 <h3> Most Downloaded </h3>
 {% include "songs/song_player_list.html" with songs=most_dwld_songs %}
 

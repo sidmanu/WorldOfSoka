@@ -4,6 +4,7 @@
 {% block title %} Search {% endblock %}
 
 {% block content %}
+	{% include "songs/disclaimer.html" %}
 	<h3> Songs matching "{{search_string}}" </h3>
 	{% if not song_list %}
 	No songs found matching the search string!
