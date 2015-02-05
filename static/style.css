@@ -148,13 +148,11 @@ body {
 
 .comments_table {
 	padding: 5px;
-	width:100%;
 	background-color:white;
 	border-collapse:collapse;
 }
 
 .comments_table td {
-	white-space:nowrap;
 	overflow:hidden;
 	text-overflow:ellipsis;
 	padding:5px;
