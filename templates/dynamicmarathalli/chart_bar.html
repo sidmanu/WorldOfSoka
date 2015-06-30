@@ -1,0 +1,34 @@
+<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type="text/javascript">
+      google.load("visualization", "1.1", {packages:["bar"]});
+      google.setOnLoadCallback(drawStuff);
+
+      function drawStuff() {
+        var data = new google.visualization.arrayToDataTable([
+          ['District', 'Hours of daimoku chanted', { role: 'style' }],
+          ["Thubrahalli", 12, "red"],
+          ["Marathalli", 10, "blue"],
+          ["AECS", 10, "green"],
+        ]);
+
+        var options = {
+          title: 'Daimoku chanted by districts',
+          width: 700,
+          legend: { position: 'none' },
+          chart: { title: 'Per district daimoku total hours',
+                   },
+          bars: 'horizontal', // Required for Material Bar Charts.
+          axes: {
+            x: {
+              0: { side: 'top', label: 'Daimoku count'} // Top x-axis.
+            }
+          },
+          bar: { groupWidth: "90%" }
+        };
+
+        var chart = new google.charts.Bar(document.getElementById('top_x_div'));
+        chart.draw(data, options);
+      };
+    </script>
+    <div id="top_x_div" ></div>
+

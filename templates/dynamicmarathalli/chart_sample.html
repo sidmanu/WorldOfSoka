@@ -1,0 +1,32 @@
+ <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type="text/javascript">
+	google.load('visualization', '1', {packages: ['corechart', 'line']});
+	google.setOnLoadCallback(drawCurveTypes);
+
+	function drawCurveTypes() {
+	      var data = new google.visualization.DataTable();
+	      data.addColumn('number', 'X');
+	      data.addColumn('number', 'Daimoku');
+	      data.addColumn('number', 'Target');
+	      data.addRows([
+		[0,1,0], [1, 20,0], [4,30,0], [45, 0, 1000]
+	      ]);
+
+	      var options = {
+		hAxis: {
+		  title: 'Days'
+		},
+		vAxis: {
+		  title: 'Daimoku'
+		},
+		series: {
+		  1: {curveType: 'function'}
+		}
+	      };
+
+	      var chart = new google.visualization.LineChart(document.getElementById('total_daimoku_chart'));
+	      chart.draw(data, options);
+    }
+    </script>
+    <div id="total_daimoku_chart" ></div>
+

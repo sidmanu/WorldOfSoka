@@ -1,0 +1,85 @@
+{% extends 'dynamicmarathalli/base.html' %}
+{% load staticfiles %}
+
+
+{% block content %}
+		<section class="box special">
+			<header class="major">
+
+				<h2>As a Chapter, let us show our debt of gratitude to Sensei <br/>
+				by chanting 7 million daimoku towards May 3rd 2015!</h2>
+				<p> If only 20 people can chant 3 hours daily, we will reach our target! </p>
+			</header>
+			<span class="image featured"><img src="http://www.bharatsokagakkai.org/wp-content/plugins/wp-responsive-photo-gallery/imagestoscroll/0af5c8fd2aca66f53eb0f8e04282f421_600_950.jpg" alt="" /></span>
+		</section>
+
+		<section class="box special features">
+			<div class="features-row">
+				<section>
+					<span class="icon major fa-flash accent2"></span>
+
+					<h3>Heart of Great Vow</h3>
+					<p>Let us understand our identity as Bodhisattvas of the Earth</p>
+				</section>
+				<section>
+					<span class="icon major fa-heart accent3"></span>
+					<h3>Heart of Warmth</h3>
+					<p>Let us embrace people and help them discover true happiness!</p>
+				</section>
+			</div>
+			<div class="features-row">
+				<section>
+					<span class="icon major fa-cloud accent4"></span>
+					<h3>Heart of Joy</h3>
+					<p>Let us cultivate joy and appreciation in our hearts to savour the joy of life</p>
+				</section>
+			</div>
+		</section>
+
+		<div class="row">
+			<div class="">
+				<section class="box special">
+					<span class="image featured"><img src="http://www.bharatsokagakkai.org/wp-content/uploads/2014/12/YD3B1.jpg" alt="" /></span>
+						<h3> Our progress towards the 7 million target! </h3>
+						 <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+						    <script type="text/javascript">
+							google.load('visualization', '1', {packages: ['corechart', 'line']});
+							google.setOnLoadCallback(drawCurveTypes);
+
+							function drawCurveTypes() {
+							      var data = new google.visualization.DataTable();
+							      data.addColumn('number', 'X');
+							      data.addColumn('number', 'Daimoku');
+							      data.addColumn('number', 'Target');
+							      data.addRows([
+								[0,1,0], [1, 20,0], [4,30,0], [45, 0, 1000]
+							      ]);
+
+							      var options = {
+								hAxis: {
+								  title: 'Days'
+								},
+								vAxis: {
+								  title: 'Daimoku'
+								},
+								series: {
+								  1: {curveType: 'function'}
+								}
+							      };
+
+							      var chart = new google.visualization.LineChart(document.getElementById('total_daimoku_chart'));
+							      chart.draw(data, options);
+						    }
+						    </script>
+						    <div id="total_daimoku_chart" ></div>
+					<ul class="actions">
+						<li><a href="#" class="button alt">Learn More</a></li>
+					</ul>
+				</section>
+
+			</div>
+		</div>
+
+	</section>
+
+{% endblock %}

@@ -3,8 +3,13 @@
 <li>
 <div id='songtile'>
 <div class='songname' title='{{song.title}}' style='width:230px;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;'>{{song.title}}</div>
-<object width=205 height=25 data='/static/dewplayer.swf?son=/static/{{song.song_path}}&amp;autoplay=0&amp;autoreplay=0' type='application/x-shockwave-flash'>  
+<!--<object width=205 height=25 data='/static/dewplayer.swf?son=/static/{{song.song_path}}&amp;autoplay=0&amp;autoreplay=0' type='application/x-shockwave-flash'>  
 </object>
+-->
+<audio controls="controls" preload="none" style="width:240px;display:block;margin-top:4px;">
+  <source src="/static/{{song.song_path}}" type="audio/mpeg">
+Your browser does not support the audio element.
+</audio>
 <br/>
 <a href='/songs/download/{{song.id}}/'><i class='fa fa-cloud-download'></i>&nbsp;Download audio/lyrics</a>
 </div>

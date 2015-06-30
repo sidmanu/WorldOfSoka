@@ -40,6 +40,7 @@ INSTALLED_APPS = (
 	'songs',
 	'feedback',
 	'jquery',
+	'dynamicmarathalli',
 )
 
 MIDDLEWARE_CLASSES = (
