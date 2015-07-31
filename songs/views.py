@@ -4,13 +4,34 @@ from django import forms
 from django.utils.html import format_html
 import sys, traceback
 
-from songs.models import Song, Language
+from songs.models import Song, Language, Stats
 from songs.models import get_most_downloaded_5_songs_list, get_latest_5_songs_list
 
+def mark_site_visit():
+	try:
+		stats_obj = Stats.objects.get()
+	except:
+		stats_obj = Stats(total_visitors=0)
+
+	stats_obj.total_visitors += 1
+	stats_obj.save()
+
+
+def get_stats():
+	stats = {}
+	try:
+		stats_obj = Stats.objects.get()
+		stats['total_visitors'] = stats_obj.total_visitors
+	except:
+		stats['total_visitors'] = 0
+	return stats
+
 def get_sidebar_context():
+	mark_site_visit()
 	lang_dict = {}
 	lang_list = Language.objects.all()	
 	lang_dict['lang_list'] = lang_list
+	lang_dict['stats'] = get_stats()
 	return lang_dict
 
 def index(request):
@@ -25,6 +46,24 @@ def index(request):
 def contact(request):
 	context = get_sidebar_context()
 	return render(request, 'songs/contact.html', context)
+
+def update_lyrics(request):
+	context = get_sidebar_context()
+	song_list = [] 
+	languages = Language.objects.all()
+	for lang in languages:
+		lang_info = {}
+		lang_info['language'] = lang.lang_name
+		lang_info['song_list'] = []
+		songs = lang.song_set.order_by('title')
+		for song in songs:
+			if 'invalid' in song.lyrics_path:
+				lang_info['song_list'].append(song)
+				
+		song_list.append(lang_info)
+	context['song_list'] = song_list 
+	return render(request, 'songs/update_lyrics.html', context) 
+
 
 def lang(request, lang):
 	context = get_sidebar_context()

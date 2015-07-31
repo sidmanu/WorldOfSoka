@@ -51,7 +51,7 @@ def get_feedback(request):
 		""" first time an empty form is displayed"""
 		form = FeedbackForm()
 
-	comments = Comment.objects.order_by('-comment_date')[:10]
+	comments = Comment.objects.order_by('-comment_date')[:50]
 	context['comments'] = comments 
 	context['feedback_form'] = form
 	return render(request, 'feedback/index.html', context)

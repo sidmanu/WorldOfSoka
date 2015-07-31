@@ -152,6 +152,12 @@ body {
 	border-collapse:collapse;
 }
 
+.comments_table tbody {
+	overflow-x:hidden;
+	overflow-y: auto;
+	height:200px;
+}
+
 .comments_table td {
 	overflow:hidden;
 	text-overflow:ellipsis;
@@ -165,8 +171,7 @@ body {
 	padding:5px;
 	border:thin white solid;
 }
-.comments_table tr {
-}
+
 #feedback_form {
 	color:black;
 }

@@ -43,18 +43,21 @@
 
 
 <table class='comments_table'>
-<tr>
-	<th style="width:250px;"> Date </th>
-	<th style="width:180px;"> Name </th>
-	<th style="width:800px;"> Comment </th>
-</tr>
-{% for comment in comments %}
-<tr>
-	<td> {{comment.comment_date}} </td>
-	<td> {{comment.commentor_name}} </td>
-	<td> {{comment.comment_text}} </td>
-</tr>
-{% endfor %}
+	<tr>
+		<th style="width:250px;"> Date </th>
+		<th style="width:180px;"> Name </th>
+		<th style="width:800px;"> Comment </th>
+	</tr>
+<tbody>
+	{% for comment in comments %}
+	<tr>
+		<td> {{comment.comment_date}} </td>
+		<td> {{comment.commentor_name}} </td>
+		<td> {{comment.comment_text}} </td>
+	</tr>
+	{% endfor %}
+
+</tbody>
 </table>
 {% endblock %}
 

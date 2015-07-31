@@ -6,4 +6,5 @@ urlpatterns = patterns('',
 		url(r'^download/(?P<song_id>\d+)/$', views.download, name='download'),
 		url(r'^lang/(?P<lang>.+)/$', views.lang, name='lang'),
 		url(r'^search/$', views.search, name='search'),
+		url(r'^update_lyrics/$', views.update_lyrics, name='update_lyrics'),
 	)

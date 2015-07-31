@@ -1,5 +1,8 @@
 from django.db import models
 
+class Stats(models.Model):
+	total_visitors = models.IntegerField(default=0)
+
 class Language(models.Model):
 	lang_name = models.CharField(max_length=30)	
 	
