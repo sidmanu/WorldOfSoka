@@ -6,18 +6,18 @@ from dynamicmarathalli.models import *
 
 def dm_render(request, template):
 	context = {}
-	
+	template = 'myDistrict/' + template	
 	return render(request, template, context)
 
 def index(request):
-	return dm_render(request, 'dynamicmarathalli/index.html')
+	return dm_render(request, 'index.html')
 
 
 def concept_committee(request):
-	return dm_render(request, 'dynamicmarathalli/concept.html')
+	return dm_render(request, 'concept.html')
 
 def cultural_committee(request):
-	return dm_render(request, 'dynamicmarathalli/cultural.html')
+	return dm_render(request, 'cultural.html')
 
 def fd_committee(request):
-	return dm_render(request, 'dynamicmarathalli/fd.html')
+	return dm_render(request, 'fd.html')
