@@ -26,3 +26,21 @@ def get_latest_5_songs_list():
 
 def get_most_downloaded_5_songs_list():
 	return Song.objects.order_by('-num_downloads')[:5]
+
+
+def get_all_tags():
+	tags = set()
+	all_songs = Song.objects.all()
+	for song in all_songs:
+		keywords_list = song.keywords.split()
+		for keyword in keywords_list:
+			tags.add(keyword)
+	tags = list(tags)
+	return tags
+
+def get_songs_by_tag(tag):
+	try:
+		songs = Song.objects.filter(keywords__contains=tag)
+		return songs
+	except:
+		return []

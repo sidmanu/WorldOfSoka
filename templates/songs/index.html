@@ -6,11 +6,21 @@
 {% block content %}
 {% include "songs/disclaimer.html" %}
 
-<h3> Latest Uploaded </h3>
-{% include "songs/song_player_list.html" with songs=latest_songs %}
+	<div style="border: thin solid #ccc">
+	<b>TAGS: </b>
+	{% for tag in tags %}
+		<a style="color:blue" href="songs/tag/{{tag}}/">#{{tag}}</a>
+	{%endfor %}
 
-<h3> Most Downloaded </h3>
-{% include "songs/song_player_list.html" with songs=most_dwld_songs %}
+	</div>
+
+	<h3> Latest Uploaded </h3>
+	{% include "songs/song_player_list.html" with songs=latest_songs %}
+
+	<h3> Most Downloaded </h3>
+	{% include "songs/song_player_list.html" with songs=most_dwld_songs %}
+
+
 
 {% endblock %}
 

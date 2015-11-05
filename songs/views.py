@@ -6,7 +6,7 @@ import sys, traceback
 
 from songs.models import Song, Language, Stats
 from songs.models import get_most_downloaded_5_songs_list, get_latest_5_songs_list
-
+from songs.models import get_all_tags, get_songs_by_tag
 def mark_site_visit():
 	try:
 		stats_obj = Stats.objects.get()
@@ -36,6 +36,8 @@ def get_sidebar_context():
 
 def index(request):
 	context = get_sidebar_context()
+	tags = get_all_tags()
+	context['tags'] = tags
 	latest_songs_list = get_latest_5_songs_list()
 	context['latest_songs'] = latest_songs_list 
 
@@ -87,6 +89,13 @@ def download(request, song_id):
 	except:
 		traceback.print_exc(file=sys.stdout)
 	return HttpResponse('Server Error!!!')
+
+def tag(request, tag):
+	context = get_sidebar_context()
+	songs = get_songs_by_tag(tag)	
+	context['tag'] = tag
+	context['song_list'] = songs
+	return render(request, 'songs/song_by_tag.html', context) 
 
 def search(request):
 	context = get_sidebar_context()
