@@ -30,6 +30,13 @@
 <br/>
     {{ feedback_form.your_email }}
 </div>
+<div class="fieldWrapper">
+    {{ feedback_form.are_you_human.errors }}
+    <label for="{{ feedback_form.are_you_human.id_for_label }}">Security: In Buddhism, which is the lowest of the Ten Worlds? (One word)</label>
+<br/>
+    {{ feedback_form.are_you_human }}
+</div>
+
 <div class="comment_box">
     {{ feedback_form.your_comment.errors }}
     <label for="{{ feedback_form.your_comment.id_for_label }}">Comment:</label>

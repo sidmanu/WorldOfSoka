@@ -6,7 +6,7 @@ import sys, traceback
 
 from songs.models import Song, Language, Stats
 from songs.models import get_most_downloaded_5_songs_list, get_latest_5_songs_list
-from songs.models import get_all_tags, get_songs_by_tag
+from songs.models import get_3_random_songs, get_all_tags, get_songs_by_tag
 def mark_site_visit():
 	try:
 		stats_obj = Stats.objects.get()
@@ -40,6 +40,7 @@ def index(request):
 	context['tags'] = tags
 	latest_songs_list = get_latest_5_songs_list()
 	context['latest_songs'] = latest_songs_list 
+	context['random_songs'] = get_3_random_songs()
 
 	most_dwld_songs_list = get_most_downloaded_5_songs_list()
 	context['most_dwld_songs'] =  most_dwld_songs_list

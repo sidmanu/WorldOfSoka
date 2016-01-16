@@ -13,6 +13,7 @@ import songs
 class FeedbackForm(forms.Form):
 	your_name = forms.CharField(label='Your name', max_length=50)
 	your_email = forms.EmailField(label='Your email', max_length=50)
+	are_you_human = forms.CharField(label='In Buddhism, which is the lowest of the Ten Worlds? (one word answer)', max_length=80)
 	your_comment = forms.CharField(label='Your comments',
 				widget=forms.Textarea)
 
@@ -26,6 +27,8 @@ def send_email(comment):
 		pass	
 
 def add_form_feedback(form_data):
+	if form_data['are_you_human'].strip().upper() !=  'HELL':
+		return	
 	c = Comment(commentor_name=form_data['your_name'],
 			comment_text = form_data['your_comment'],
 			commentor_email = form_data['your_email'])

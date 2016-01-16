@@ -1,4 +1,5 @@
 from django.db import models
+import random
 
 class Stats(models.Model):
 	total_visitors = models.IntegerField(default=0)
@@ -27,6 +28,17 @@ def get_latest_5_songs_list():
 def get_most_downloaded_5_songs_list():
 	return Song.objects.order_by('-num_downloads')[:5]
 
+def get_3_random_songs():
+	max_count = Song.objects.count()
+	random_1 = random.randint(0, max_count - 1)
+	random_2 = random.randint(0, max_count - 1)
+	random_3 = random.randint(0, max_count - 1)
+	all_songs = Song.objects.all()
+	songs_list = [] 
+	songs_list.append(all_songs[random_1])
+	songs_list.append(all_songs[random_2])
+	songs_list.append(all_songs[random_3])
+	return songs_list
 
 def get_all_tags():
 	tags = set()

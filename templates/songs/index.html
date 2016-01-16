@@ -14,12 +14,15 @@
 
 	</div>
 
-	<h3> Latest Uploaded </h3>
+	<h3> New Songs!</h3>
 	{% include "songs/song_player_list.html" with songs=latest_songs %}
+
+	<h3> Try something new!</h3>
+	{% include "songs/song_player_list.html" with songs=random_songs %}
+
 
 	<h3> Most Downloaded </h3>
 	{% include "songs/song_player_list.html" with songs=most_dwld_songs %}
-
 
 
 {% endblock %}
