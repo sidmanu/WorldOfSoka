@@ -1,0 +1,79 @@
+{% load staticfiles %}
+<html>
+<head>
+	<title>
+	{% block title %}
+		World of Soka!
+	{% endblock %}
+	</title>
+	<link rel="stylesheet" type="text/css" href="/static/style.css" />
+	<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+	{% block extrahead %}
+	{% endblock %}
+	<meta name="keywords" content="SGI songs, SGI Music, songs, music">
+	<meta name="description" content="This is an unofficial website to download BSG & SGI songs, lyrics and music for SGI members">
+
+</head>
+<body>
+
+	<div id="topbar">
+		<div id="topbarphoto"></div>
+		<h1>World of Soka</h1>
+		</div>
+	<div id='topmenu'>
+		<ul>
+			<li> <a href='{{ URL }}/ '><i class='fa fa-home'></i> Home</a> </li>
+			<li> <a href='{{ URL }}/feedback '><i class='fa fa-comments'></i> Requests & Feedback</a> </li>
+			<li> <a href='{{ URL }}/contact '><i class='fa fa-rss'></i> Contact Us</a> </li>
+
+		</ul>
+	</div>
+	<div id="maincontentwrapper">
+	<div id="maincontent">
+			<div id="sidebar">
+				{% block sidebar %}
+				
+				<h3> Songs by Language </h3>	
+				<ul>
+					{% for lang in lang_list %}
+						<li>
+						<i class="fa fa-music"> </i>
+						<a href="{% url 'songs:lang' lang.lang_name %}"> {{lang.lang_name}} </a>
+						</li>
+					{% endfor %}
+				</ul>
+
+				<h3> Search </h3>
+					<form id="search_form" action='/songs/search/' method="POST">
+					{% csrf_token %}
+					<input type="text" name="search_string">
+					<input type="submit" name="search" value="search">
+					</form>	
+
+				<h3> Miscellaneous </h3>
+					<a style="font-size:12px; color:red;" href="/songs/update_lyrics">Songs with missing lyrics </a>
+				<img src="http://dykn.com/storage/2014/11/thirtyroses.jpg" style="margin-top:8px;width:auto;height:120px"/>
+				<p> Total {{stats.total_visitors}} happy visitors since 31 July 2015</p>
+				{% endblock %}
+			</div>
+
+			<div id="content" style="">
+				{% block content %}
+
+
+				{% endblock %}
+			</div>
+	</div>
+
+	</div>
+</body>
+	<script type="text/javascript" src="/static/jquery-1.11.2.min.js"> </script>
+
+	<script type="text/javascript">
+	$(document).ready(function() {
+		$("#content").hide();
+		$("#content").fadeIn(1000);
+	});
+	</script>
+
+</html>

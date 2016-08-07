@@ -1,0 +1,23 @@
+{% extends "songs/base.html" %}
+{% load staticfiles %}
+
+{% block title %} Update Song Lyrics {% endblock %}
+
+{% block content %}
+	<h2> Songs which don't have lyrics </h2>
+
+	{% for lang in song_list %}
+	<div>
+	<h3> {{lang.language}} </h3>
+	<ol>
+		{% for song in lang.song_list %}
+			<li>{{song}} </li>
+		{% endfor %}
+
+	</ol>
+
+	</div>
+
+	{% endfor %}
+{% endblock %}
+

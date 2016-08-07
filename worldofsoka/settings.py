@@ -23,7 +23,7 @@ SECRET_KEY = 'f+o2f%s)&zkxl*&-2qx0h-!=74(jl_+@=#a4-0_t*wf=j6w!g)'
 DEBUG = True
 
 TEMPLATE_DEBUG = True
-TEMPLATE_DIRS = [os.path.join(BASE_DIR, 'templates')]
+#TEMPLATE_DIRS = [os.path.join(BASE_DIR, 'templates')]
 
 ALLOWED_HOSTS = []
 
@@ -41,6 +41,7 @@ INSTALLED_APPS = (
 	'feedback',
 	'jquery',
 	'dynamicmarathalli',
+	'rest_framework',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -90,3 +91,31 @@ STATICFILES_DIR = (
 	os.path.join(BASE_DIR, "static"),
 )
 STATIC_ROOT = '/home/ubuntu/worldofsoka.com/worldofsoka/static'
+
+
+
+
+TEMPLATES = [
+    {
+        'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        'DIRS': [
+            # insert your TEMPLATE_DIRS here
+        ],
+        'APP_DIRS': True,
+        'OPTIONS': {
+            'context_processors': [
+                # Insert your TEMPLATE_CONTEXT_PROCESSORS here or use this
+                # list if you haven't customized them:
+                'django.contrib.auth.context_processors.auth',
+                'django.template.context_processors.debug',
+                'django.template.context_processors.i18n',
+                'django.template.context_processors.media',
+                'django.template.context_processors.static',
+                'django.template.context_processors.tz',
+                'django.contrib.messages.context_processors.messages',
+            ],
+        },
+    },
+]
+
+

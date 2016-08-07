@@ -2,11 +2,25 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from django import forms
 from django.utils.html import format_html
+from rest_framework.permissions import IsAdminUser
+
 import sys, traceback
 
+
+from rest_framework import generics
+
+from songs.serializers import SongSerializer
 from songs.models import Song, Language, Stats
 from songs.models import get_most_downloaded_5_songs_list, get_latest_5_songs_list
 from songs.models import get_3_random_songs, get_all_tags, get_songs_by_tag
+
+class SongView(generics.ListAPIView):
+	queryset = Song.objects.all()
+	model = Song
+	serializer_class = SongSerializer
+	permission_classes = (IsAdminUser,)
+
+
 def mark_site_visit():
 	try:
 		stats_obj = Stats.objects.get()
