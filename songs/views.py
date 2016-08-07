@@ -3,6 +3,8 @@ from django.http import HttpResponse
 from django import forms
 from django.utils.html import format_html
 from rest_framework.permissions import IsAdminUser
+from rest_framework import filters 
+import django_filters
 
 import sys, traceback
 
@@ -14,12 +16,25 @@ from songs.models import Song, Language, Stats
 from songs.models import get_most_downloaded_5_songs_list, get_latest_5_songs_list
 from songs.models import get_3_random_songs, get_all_tags, get_songs_by_tag
 
+class LangView(generics.ListAPIView):
+	serializer_class = SongSerializer
+
+	def get_queryset(self):
+		lang_name = self.kwargs['lang_name']
+		try:
+			lang = Language.objects.filter(lang_name__contains=lang_name)
+		except:
+			lang = Language.objects.get(pk=1)
+
+		return Song.objects.filter(lang=lang)
+
+
 class SongView(generics.ListAPIView):
 	queryset = Song.objects.all()
 	model = Song
 	serializer_class = SongSerializer
-	permission_classes = (IsAdminUser,)
-
+	filter_backends = (filters.DjangoFilterBackend,)
+	filter_fields = ('lyrics_path','lang',)
 
 def mark_site_visit():
 	try:
