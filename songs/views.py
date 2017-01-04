@@ -4,14 +4,15 @@ from django import forms
 from django.utils.html import format_html
 from rest_framework.permissions import IsAdminUser
 from rest_framework import filters 
+from rest_framework.response import Response
+from rest_framework.decorators import api_view
 import django_filters
 
 import sys, traceback
 
-
 from rest_framework import generics
 
-from songs.serializers import SongSerializer
+from songs.serializers import * 
 from songs.models import Song, Language, Stats
 from songs.models import get_most_downloaded_5_songs_list, get_latest_5_songs_list
 from songs.models import get_3_random_songs, get_all_tags, get_songs_by_tag
@@ -28,6 +29,18 @@ class LangView(generics.ListAPIView):
 
 		return Song.objects.filter(lang=lang)
 
+@api_view(['GET'])
+def song_info(request, song_id):
+
+	try:
+		song = Song.objects.filter(pk=song_id)
+	except:
+		song = Song.objects.filter(pk=23)
+
+	serializer = SongDetailSerializer(song, many=True)
+	song = serializer.data
+
+	return Response({"songs": song})
 
 class SongView(generics.ListAPIView):
 	queryset = Song.objects.all()
@@ -87,7 +100,7 @@ def update_lyrics(request):
 		lang_info = {}
 		lang_info['language'] = lang.lang_name
 		lang_info['song_list'] = []
-		songs = lang.song_set.order_by('title')
+		songs = Song.objects.filter(lang=lang).order_by('title')
 		for song in songs:
 			if 'invalid' in song.lyrics_path:
 				lang_info['song_list'].append(song)
@@ -101,7 +114,7 @@ def lang(request, lang):
 	context = get_sidebar_context()
 	lang = Language.objects.get(lang_name=lang) 
 	if lang:
-		song_list = lang.song_set.order_by('title')
+		song_list = Song.objects.filter(lang=lang)
 		context['song_list'] = song_list
 		context['lang'] = lang.lang_name.title()
 	return render(request, 'songs/lang.html', context) 

@@ -9,7 +9,11 @@ https://docs.djangoproject.com/en/1.7/howto/deployment/wsgi/
 
 import os, sys
 sys.path.append('/home/ubuntu/worldofsoka.com/worldofsoka')
-os.environ.setdefault("DJANGO_SETTINGS_MODULE", "worldofsoka.settings")
+abspath = os.path.dirname(__file__)
+sys.path.append(abspath)
+os.chdir(abspath)
+
+os.environ["DJANGO_SETTINGS_MODULE"] = "worldofsoka.settings"
 
 from django.core.wsgi import get_wsgi_application
 application = get_wsgi_application()

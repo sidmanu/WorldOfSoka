@@ -10,6 +10,7 @@ urlpatterns = [
 		url(r'^$', views.index, name='index'),
 		url(r'^rest/$', views.SongView.as_view(), name='song-list'),
 		url(r'^rest/lang/(?P<lang_name>.+)/$', views.LangView().as_view(), name='lang-based-song-list'),
+		url(r'^rest/song/(?P<song_id>\d+)/$', views.song_info, name='song-view-based-on-id'),
 		url(r'^download/(?P<song_id>\d+)/$', views.download, name='download'),
 		url(r'^lang/(?P<lang>.+)/$', views.lang, name='lang'),
 		url(r'^search/$', views.search, name='search'),

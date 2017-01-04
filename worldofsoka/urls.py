@@ -9,5 +9,6 @@ urlpatterns = [
     url(r'^songs/', include('songs.urls', namespace="songs")),
     url(r'^feedback/', include('feedback.urls', namespace="feedback")),
     url(r'^contact/', views.contact, name='contact'),
+    url(r'^tinymce/', include('tinymce.urls')),
 ]
 
