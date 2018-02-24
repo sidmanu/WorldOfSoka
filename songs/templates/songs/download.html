@@ -29,6 +29,11 @@
 	{% else %}
 	<a href='/static/{{song.lyrics_path}}' style="font-size:24px">
 		<i class="fa fa-file-word-o" ></i> Lyrics</a>
+        <br/>
+        <iframe style="width:80%;height:100%;scrolling='no'" srcdoc="
+            {{song.lyrics_text}}">
+        </iframe>
+
 
 	{% endif %}
 	<p> If you have any queries, please feel free to drop a 

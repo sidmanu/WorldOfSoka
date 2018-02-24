@@ -17,6 +17,20 @@ from songs.models import Song, Language, Stats
 from songs.models import get_most_downloaded_5_songs_list, get_latest_5_songs_list
 from songs.models import get_3_random_songs, get_all_tags, get_songs_by_tag
 
+
+
+class SearchSongView(generics.ListAPIView):
+	serializer_class = SongSerializer
+
+	def get_queryset(self):
+		string = self.kwargs['search_string']
+		tokens = string.split()	
+		songs = Song.objects.all()	
+		for token in tokens:	
+			songs = songs.filter(title__contains=token)
+		return songs 
+
+
 class LangView(generics.ListAPIView):
 	serializer_class = SongSerializer
 
